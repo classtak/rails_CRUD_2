@@ -1,4 +1,5 @@
 class PostController < ApplicationController
+  before_action :authorize
   def index
     @posts = Post.all.reverse
   end
@@ -10,7 +11,7 @@ class PostController < ApplicationController
   def create
     # params[:username]  params[:title] params[:content]
     # 1번 방법
-    Post.create(:username => params[:username],
+    Post.create(
               :title => params[:title],
               :content => params[:content])
     # 1-1번 방법

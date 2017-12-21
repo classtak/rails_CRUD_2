@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
       @user = User.find(session[:user_id])
     end
   end
+
+  def authorize
+    # 만약에 로그인 하지 않았으면,
+    # 로그인 페이지로 가버려!
+    redirect_to '/user/login' if current_user.nil?
+  end
   # view에서 보여주기 위해서는 컨트롤러에서 뷰로 넘겨야하는데
   # helper_method를 활용하여 바로 view에서 쓸 수 있도록 할 수 있다.
   helper_method :current_user
