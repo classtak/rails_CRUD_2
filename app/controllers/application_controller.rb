@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
   def authorize
     # 만약에 로그인 하지 않았으면,
     # 로그인 페이지로 가버려!
+    flash[:alert] = "로그인을 해야 글을 쓸 수 있습니다."
     redirect_to '/user/login' if current_user.nil?
   end
   # view에서 보여주기 위해서는 컨트롤러에서 뷰로 넘겨야하는데

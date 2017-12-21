@@ -1,5 +1,5 @@
 class PostController < ApplicationController
-  before_action :authorize
+  before_action :authorize, except: [:index]
   def index
     @posts = Post.all.reverse
   end
