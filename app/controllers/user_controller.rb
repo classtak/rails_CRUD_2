@@ -33,7 +33,7 @@ class UserController < ApplicationController
       # 2-1. 맞으면, 로그인
       if @user.password == params[:password]
         session[:user_id] = @user.id
-        flash[:alert] = "#{@user.name}님 로그인에 성공하였습니다!"
+        flash[:notice] = "#{@user.name}님 로그인에 성공하였습니다!"
         redirect_to '/'
         # 2-2.틀리면, 비밀번호가 틀렸습니다.
       else
@@ -45,6 +45,7 @@ class UserController < ApplicationController
 
   def logout
     session.clear
+    flash[:notice] = "로그아웃에 성공하였습니다."
     redirect_to '/'
   end
 end
